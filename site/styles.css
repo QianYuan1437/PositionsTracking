@@ -100,6 +100,10 @@ h2 { font-size: clamp(24px, 3vw, 32px); }
   grid-template-columns: minmax(320px, 1.05fr) minmax(280px, 0.95fr);
   align-items: start;
 }
+.pie-column {
+  display: grid;
+  align-content: start;
+}
 .investor-grid {
   display: grid;
   gap: 10px;
@@ -182,14 +186,14 @@ h2 { font-size: clamp(24px, 3vw, 32px); }
   position: relative;
   width: 100%;
   max-width: 520px;
-  height: 520px;
-  margin: 0 auto 22px;
+  height: 500px;
+  margin: 0 auto 12px;
   display: grid;
   place-items: center;
 }
 #donutChart { width: 100%; height: 100%; }
 .holding-detail-card {
-  margin-top: -2px;
+  margin-top: 0;
   padding: 16px 18px;
   border-radius: 22px;
   border: 1px solid rgba(125,211,252,.16);

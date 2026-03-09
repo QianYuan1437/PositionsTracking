@@ -156,8 +156,9 @@ function drawDonut(holdings, accent, hoverIndex = -1) {
 
   const total = holdings.reduce((sum, item) => sum + item.value, 0) || 1;
   const center = size / 2;
-  const radius = size * 0.38;
+  const radius = size * 0.36;
   const inner = radius * 0.58;
+  const labelRadius = (inner + radius) / 2;
   let start = -Math.PI / 2;
   state.donut.slices = [];
 
@@ -165,6 +166,9 @@ function drawDonut(holdings, accent, hoverIndex = -1) {
     const angle = (item.value / total) * Math.PI * 2;
     const active = index === hoverIndex;
     const outerRadius = active ? radius + 10 * dpr : radius;
+    const ratio = (item.value / total) * 100;
+    const mid = start + angle / 2;
+
     ctx.beginPath();
     ctx.arc(center, center, outerRadius, start, start + angle);
     ctx.arc(center, center, inner, start + angle, start, true);
@@ -174,6 +178,39 @@ function drawDonut(holdings, accent, hoverIndex = -1) {
     ctx.strokeStyle = active ? '#f8fafc' : 'rgba(7,17,31,.9)';
     ctx.lineWidth = active ? 4 * dpr : 3 * dpr;
     ctx.stroke();
+
+    if (ratio >= 6.5) {
+      ctx.save();
+      ctx.fillStyle = '#f8fbff';
+      ctx.font = `${12 * dpr}px Space Grotesk`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(`${ratio.toFixed(1)}%`, center + Math.cos(mid) * labelRadius, center + Math.sin(mid) * labelRadius);
+      ctx.restore();
+    } else {
+      const innerGuideX = center + Math.cos(mid) * (outerRadius + 8 * dpr);
+      const innerGuideY = center + Math.sin(mid) * (outerRadius + 8 * dpr);
+      const outerGuideX = center + Math.cos(mid) * (outerRadius + 28 * dpr);
+      const outerGuideY = center + Math.sin(mid) * (outerRadius + 28 * dpr);
+      const horizontal = outerGuideX >= center ? 22 * dpr : -22 * dpr;
+      const labelX = outerGuideX + horizontal;
+
+      ctx.save();
+      ctx.strokeStyle = 'rgba(226,232,240,.72)';
+      ctx.lineWidth = 1.5 * dpr;
+      ctx.beginPath();
+      ctx.moveTo(innerGuideX, innerGuideY);
+      ctx.lineTo(outerGuideX, outerGuideY);
+      ctx.lineTo(labelX, outerGuideY);
+      ctx.stroke();
+      ctx.fillStyle = '#e2e8f0';
+      ctx.font = `${11 * dpr}px Space Grotesk`;
+      ctx.textAlign = outerGuideX >= center ? 'left' : 'right';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(`${ratio.toFixed(1)}%`, labelX + (outerGuideX >= center ? 5 * dpr : -5 * dpr), outerGuideY);
+      ctx.restore();
+    }
+
     state.donut.slices.push({
       start,
       end: start + angle,
