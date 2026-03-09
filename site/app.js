@@ -14,7 +14,15 @@ const NAME_MAP = {
   'Bill Gates': '比尔·盖茨 | Bill Gates',
 };
 
-const state = { data: null, activeIndex: 0 };
+const state = {
+  data: null,
+  activeIndex: 0,
+  chart: {
+    points: [],
+    accent: '#38bdf8',
+    raf: null,
+  },
+};
 
 fetch('./data/positions.json')
   .then((res) => res.json())
@@ -22,6 +30,7 @@ fetch('./data/positions.json')
     state.data = normalizeData(data);
     renderOverview(state.data);
     renderInvestorGrid(state.data.investors);
+    bindChartEvents();
     renderInvestor(0);
     renderErrors(state.data.errors || []);
     bindModal();
@@ -166,7 +175,7 @@ function drawDonut(holdings) {
   ctx.fill();
 }
 
-function drawChart(points, accent) {
+function drawChart(points, accent, hoverIndex = -1) {
   const canvas = document.getElementById('timelineChart');
   const ctx = canvas.getContext('2d');
   const dpr = window.devicePixelRatio || 1;
@@ -176,49 +185,148 @@ function drawChart(points, accent) {
   canvas.height = height;
   ctx.clearRect(0, 0, width, height);
 
-  const pad = 44 * dpr;
+  const leftPad = 72 * dpr;
+  const rightPad = 28 * dpr;
+  const topPad = 24 * dpr;
+  const bottomPad = 34 * dpr;
   const values = points.map((item) => item.portfolioValue);
   const max = Math.max(...values);
   const min = Math.min(...values);
   const span = Math.max(max - min, 1);
 
-  ctx.strokeStyle = 'rgba(148,163,184,.25)';
-  ctx.lineWidth = 1;
-  for (let i = 0; i < 4; i += 1) {
-    const y = pad + ((height - pad * 2) / 3) * i;
-    ctx.beginPath();
-    ctx.moveTo(pad, y);
-    ctx.lineTo(width - pad, y);
-    ctx.stroke();
-  }
-
   const xy = points.map((item, index) => {
-    const x = pad + ((width - pad * 2) / Math.max(points.length - 1, 1)) * index;
-    const y = height - pad - ((item.portfolioValue - min) / span) * (height - pad * 2);
-    return { x, y };
+    const x = leftPad + ((width - leftPad - rightPad) / Math.max(points.length - 1, 1)) * index;
+    const y = height - bottomPad - ((item.portfolioValue - min) / span) * (height - topPad - bottomPad);
+    return { x, y, item };
   });
 
-  const gradient = ctx.createLinearGradient(0, pad, 0, height - pad);
-  gradient.addColorStop(0, `${accent}cc`);
-  gradient.addColorStop(1, 'rgba(56,189,248,.06)');
+  ctx.strokeStyle = 'rgba(148,163,184,.24)';
+  ctx.lineWidth = 1;
+  ctx.fillStyle = 'rgba(142,165,197,.78)';
+  ctx.font = `${11 * dpr}px Space Grotesk`;
+
+  for (let i = 0; i < 5; i += 1) {
+    const ratio = i / 4;
+    const y = topPad + (height - topPad - bottomPad) * ratio;
+    const value = max - span * ratio;
+    ctx.beginPath();
+    ctx.moveTo(leftPad, y);
+    ctx.lineTo(width - rightPad, y);
+    ctx.stroke();
+    ctx.fillText(compact.format(value), 8 * dpr, y + 4 * dpr);
+  }
+
+  ctx.strokeStyle = 'rgba(125,211,252,.2)';
+  ctx.beginPath();
+  ctx.moveTo(leftPad, topPad - 4 * dpr);
+  ctx.lineTo(leftPad, height - bottomPad);
+  ctx.lineTo(width - rightPad, height - bottomPad);
+  ctx.stroke();
+
+  const gradient = ctx.createLinearGradient(0, topPad, 0, height - bottomPad);
+  gradient.addColorStop(0, `${accent}b8`);
+  gradient.addColorStop(1, 'rgba(56,189,248,.03)');
 
   ctx.beginPath();
-  xy.forEach((point, index) => index === 0 ? ctx.moveTo(point.x, point.y) : ctx.lineTo(point.x, point.y));
+  ctx.moveTo(xy[0].x, xy[0].y);
+  for (let i = 0; i < xy.length - 1; i += 1) {
+    const current = xy[i];
+    const next = xy[i + 1];
+    const cp1x = current.x + (next.x - current.x) / 2;
+    const cp1y = current.y;
+    const cp2x = current.x + (next.x - current.x) / 2;
+    const cp2y = next.y;
+    ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, next.x, next.y);
+  }
   ctx.strokeStyle = accent;
   ctx.lineWidth = 3 * dpr;
   ctx.stroke();
 
-  ctx.lineTo(xy[xy.length - 1].x, height - pad);
-  ctx.lineTo(xy[0].x, height - pad);
+  ctx.lineTo(xy[xy.length - 1].x, height - bottomPad);
+  ctx.lineTo(xy[0].x, height - bottomPad);
   ctx.closePath();
   ctx.fillStyle = gradient;
   ctx.fill();
 
   ctx.fillStyle = '#edf6ff';
-  ctx.font = `${12 * dpr}px Space Grotesk`;
-  ctx.fillText(points[0].quarter, pad, height - 14 * dpr);
-  ctx.fillText(points[points.length - 1].quarter, width - pad - 76 * dpr, height - 14 * dpr);
-  ctx.fillText(compact.format(max), pad, pad - 10 * dpr);
+  ctx.font = `${11 * dpr}px Space Grotesk`;
+  ctx.fillText(points[0].quarter, leftPad, height - 10 * dpr);
+  ctx.fillText(points[points.length - 1].quarter, width - rightPad - 80 * dpr, height - 10 * dpr);
+
+  xy.forEach((point, index) => {
+    const active = index === hoverIndex;
+    ctx.beginPath();
+    ctx.arc(point.x, point.y, active ? 5 * dpr : 3.2 * dpr, 0, Math.PI * 2);
+    ctx.fillStyle = active ? '#f8fafc' : accent;
+    ctx.fill();
+    if (active) {
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, 10 * dpr, 0, Math.PI * 2);
+      ctx.strokeStyle = `${accent}88`;
+      ctx.lineWidth = 2 * dpr;
+      ctx.stroke();
+    }
+  });
+
+  state.chart.points = xy.map((point) => ({
+    x: point.x / dpr,
+    y: point.y / dpr,
+    item: point.item,
+  }));
+  state.chart.accent = accent;
+}
+
+function bindChartEvents() {
+  const canvas = document.getElementById('timelineChart');
+  const tooltip = document.getElementById('chartTooltip');
+
+  const handleMove = (event) => {
+    if (!state.chart.points.length) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    let nearest = -1;
+    let best = Infinity;
+
+    state.chart.points.forEach((point, index) => {
+      const dx = point.x - x;
+      const dy = point.y - y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < best) {
+        best = dist;
+        nearest = index;
+      }
+    });
+
+    if (best > 22) {
+      tooltip.classList.add('hidden');
+      requestChartRedraw(-1);
+      return;
+    }
+
+    const active = state.chart.points[nearest];
+    tooltip.innerHTML = `<strong>${active.item.quarter}</strong><p>组合市值：${money(active.item.portfolioValue)}</p><p>持仓数量：${active.item.holdingsCount}</p>`;
+    tooltip.style.left = `${active.x}px`;
+    tooltip.style.top = `${active.y}px`;
+    tooltip.classList.remove('hidden');
+    requestChartRedraw(nearest);
+  };
+
+  canvas.addEventListener('mousemove', handleMove);
+  canvas.addEventListener('mouseleave', () => {
+    tooltip.classList.add('hidden');
+    requestChartRedraw(-1);
+  });
+  window.addEventListener('resize', () => requestChartRedraw(-1));
+}
+
+function requestChartRedraw(hoverIndex) {
+  if (state.chart.raf) cancelAnimationFrame(state.chart.raf);
+  state.chart.raf = requestAnimationFrame(() => {
+    const investor = state.data?.investors?.[state.activeIndex];
+    if (!investor) return;
+    drawChart(investor.timeline, investor.accent, hoverIndex);
+  });
 }
 
 function bindModal() {
