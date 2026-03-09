@@ -16,7 +16,7 @@
       <div>
         <p class="eyebrow">13F INTELLIGENCE BOARD</p>
         <h1>著名投资人物持仓雷达</h1>
-        <p class="lede">直观看持仓规模、季度变化、核心仓位与 10 年回溯轨迹。数据来自 SEC 13F 文件，按日自动更新。</p>
+        <p class="lede">以饼状图快速识别每位投资人的核心仓位，点击人物即可弹出持仓明细表，结合 10 年回溯轨迹看清组合演化。</p>
       </div>
       <div class="hero-panel">
         <div class="stat-pill"><span>追踪跨度</span><strong id="yearsBack">10Y</strong></div>
@@ -26,12 +26,30 @@
     </header>
 
     <main class="shell">
-      <section class="section">
-        <div class="section-head">
-          <h2>全局排行</h2>
-          <p>按最近一期 13F 持仓市值排序。</p>
+      <section class="section split stage-split">
+        <div class="panel stage-panel">
+          <div class="section-head compact">
+            <h2>人物选择台</h2>
+            <p>中文 + English 展示，点谁就看谁的持仓切片。</p>
+          </div>
+          <div id="investorGrid" class="investor-grid"></div>
         </div>
-        <div id="rankingGrid" class="ranking-grid"></div>
+        <div class="panel spotlight-panel">
+          <div class="section-head compact">
+            <h2>组合饼状图</h2>
+            <p id="pieSubtitle">显示当前人物前 12 大持仓占比。</p>
+          </div>
+          <div class="pie-stage">
+            <canvas id="donutChart" width="520" height="520"></canvas>
+            <div class="pie-center">
+              <p id="centerQuarter" class="eyebrow"></p>
+              <h3 id="centerName"></h3>
+              <strong id="centerValue"></strong>
+              <button id="openModalButton" class="glow-button">查看详细持仓</button>
+            </div>
+          </div>
+          <div id="legendList" class="legend-list"></div>
+        </div>
       </section>
 
       <section class="section split">
@@ -45,40 +63,10 @@
         <div class="panel">
           <div class="section-head compact">
             <h2>10 年趋势曲线</h2>
-            <p>选中人物后查看组合价值变化。</p>
+            <p>看组合价值如何穿越不同市场周期。</p>
           </div>
           <div class="chart-wrap">
             <canvas id="timelineChart" width="640" height="320"></canvas>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-head">
-          <h2>投资人详情</h2>
-          <p>点击卡片切换人物，查看最新持仓与季度变更。</p>
-        </div>
-        <div id="investorTabs" class="investor-tabs"></div>
-        <div class="detail-grid">
-          <div class="panel detail-panel">
-            <div class="detail-title">
-              <div>
-                <p id="detailEntity" class="eyebrow"></p>
-                <h3 id="detailName"></h3>
-              </div>
-              <div class="detail-meta">
-                <span id="detailQuarter"></span>
-                <strong id="detailValue"></strong>
-              </div>
-            </div>
-            <div id="holdingsTable" class="table-card"></div>
-          </div>
-          <div class="panel detail-panel">
-            <div class="section-head compact">
-              <h2>季度变化拆解</h2>
-              <p>与上一份 13F 申报相比。</p>
-            </div>
-            <div id="detailChanges" class="changes-list detail-changes"></div>
           </div>
         </div>
       </section>
@@ -93,6 +81,25 @@
         </div>
       </section>
     </main>
+
+    <div id="modal" class="modal hidden" aria-hidden="true">
+      <div id="modalBackdrop" class="modal-backdrop"></div>
+      <div class="modal-panel">
+        <button id="closeModalButton" class="modal-close" aria-label="关闭">×</button>
+        <div class="modal-head">
+          <div>
+            <p id="modalEntity" class="eyebrow"></p>
+            <h2 id="modalName"></h2>
+            <p id="modalQuarter" class="modal-sub"></p>
+          </div>
+          <div class="modal-metrics">
+            <span>组合市值</span>
+            <strong id="modalValue"></strong>
+          </div>
+        </div>
+        <div id="modalTable" class="modal-table"></div>
+      </div>
+    </div>
 
     <script src="./app.js" defer></script>
   </body>
