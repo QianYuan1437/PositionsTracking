@@ -42,14 +42,17 @@
             <p id="pieSubtitle">显示当前人物前 12 大持仓占比。</p>
           </div>
           <div class="spotlight-grid">
-            <div class="pie-stage">
-              <canvas id="donutChart" width="520" height="520"></canvas>
-              <div class="pie-center">
-                <p id="centerQuarter" class="eyebrow"></p>
-                <h3 id="centerName"></h3>
-                <strong id="centerValue"></strong>
-                <button id="openModalButton" class="glow-button">查看详细持仓</button>
+            <div>
+              <div class="pie-stage">
+                <canvas id="donutChart" width="520" height="520"></canvas>
+                <div class="pie-center">
+                  <p id="centerQuarter" class="eyebrow"></p>
+                  <h3 id="centerName"></h3>
+                  <strong id="centerValue"></strong>
+                  <button id="openModalButton" class="glow-button">查看详细持仓</button>
+                </div>
               </div>
+              <div id="holdingDetailCard" class="holding-detail-card"></div>
             </div>
             <div>
               <div class="legend-head">

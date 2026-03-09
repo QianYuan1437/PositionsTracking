@@ -22,6 +22,10 @@ const state = {
     accent: '#38bdf8',
     raf: null,
   },
+  donut: {
+    slices: [],
+    hoverIndex: -1,
+  },
 };
 
 fetch('./data/positions.json')
@@ -31,6 +35,7 @@ fetch('./data/positions.json')
     renderOverview(state.data);
     renderInvestorGrid(state.data.investors);
     bindChartEvents();
+    bindDonutEvents();
     renderInvestor(0);
     renderErrors(state.data.errors || []);
     bindModal();
@@ -111,13 +116,15 @@ function renderInvestorGrid(investors) {
 
 function renderInvestor(index) {
   state.activeIndex = index;
+  state.donut.hoverIndex = -1;
   const investor = state.data.investors[index];
   document.getElementById('pieSubtitle').textContent = `${investor.displayName} 最近一期前 ${investor.latestHoldings.length} 大持仓占比`;
   document.getElementById('centerQuarter').textContent = `${investor.latestQuarter} / ${investor.latestDate}`;
   document.getElementById('centerName').textContent = investor.displayName;
   document.getElementById('centerValue').textContent = money(investor.latestPortfolioValue);
   renderLegend(investor);
-  drawDonut(investor.latestHoldings, investor.accent);
+  renderHoldingDetail(investor, 0);
+  drawDonut(investor.latestHoldings, investor.accent, -1);
   drawChart(investor.timeline, investor.accent);
 }
 
@@ -138,7 +145,7 @@ function renderLegend(investor) {
   `).join('');
 }
 
-function drawDonut(holdings) {
+function drawDonut(holdings, accent, hoverIndex = -1) {
   const canvas = document.getElementById('donutChart');
   const ctx = canvas.getContext('2d');
   const dpr = window.devicePixelRatio || 1;
@@ -152,26 +159,38 @@ function drawDonut(holdings) {
   const radius = size * 0.38;
   const inner = radius * 0.58;
   let start = -Math.PI / 2;
+  state.donut.slices = [];
 
-  holdings.forEach((item) => {
+  holdings.forEach((item, index) => {
     const angle = (item.value / total) * Math.PI * 2;
+    const active = index === hoverIndex;
+    const outerRadius = active ? radius + 10 * dpr : radius;
     ctx.beginPath();
-    ctx.arc(center, center, radius, start, start + angle);
+    ctx.arc(center, center, outerRadius, start, start + angle);
     ctx.arc(center, center, inner, start + angle, start, true);
     ctx.closePath();
     ctx.fillStyle = item.color;
     ctx.fill();
-    ctx.strokeStyle = 'rgba(7,17,31,.9)';
-    ctx.lineWidth = 3 * dpr;
+    ctx.strokeStyle = active ? '#f8fafc' : 'rgba(7,17,31,.9)';
+    ctx.lineWidth = active ? 4 * dpr : 3 * dpr;
     ctx.stroke();
+    state.donut.slices.push({
+      start,
+      end: start + angle,
+      outerRadius: outerRadius / dpr,
+      innerRadius: inner / dpr,
+      item,
+      index,
+      center: center / dpr,
+    });
     start += angle;
   });
 
   ctx.beginPath();
   ctx.arc(center, center, inner - 8 * dpr, 0, Math.PI * 2);
   ctx.fillStyle = 'rgba(8,18,34,.92)';
-  ctx.shadowColor = 'rgba(56,189,248,.18)';
-  ctx.shadowBlur = 24 * dpr;
+  ctx.shadowColor = `${accent}30`;
+  ctx.shadowBlur = 18 * dpr;
   ctx.fill();
 }
 
@@ -274,6 +293,81 @@ function drawChart(points, accent, hoverIndex = -1) {
     item: point.item,
   }));
   state.chart.accent = accent;
+}
+
+function renderHoldingDetail(investor, index) {
+  const holding = investor.latestHoldings[index] || investor.latestHoldings[0];
+  const total = investor.latestHoldings.reduce((sum, item) => sum + item.value, 0) || 1;
+  const weight = holding.weight || (holding.value / total) * 100;
+  document.getElementById('holdingDetailCard').innerHTML = `
+    <div class="detail-top">
+      <div>
+        <strong>${escapeHtml(holding.symbol || holding.name)}</strong>
+        <p>${escapeHtml(holding.name)}</p>
+      </div>
+      <div class="detail-meta">
+        <strong>${weight.toFixed(1)}%</strong>
+        <p>组合占比</p>
+      </div>
+    </div>
+    <div class="detail-bottom">
+      <div>
+        <strong>${money(holding.value)}</strong>
+        <p>持仓市值</p>
+      </div>
+      <div>
+        <strong>${compact.format(holding.shares || 0)}</strong>
+        <p>持有股数</p>
+      </div>
+      <div>
+        <strong>${escapeHtml(holding.cusip || '-')}</strong>
+        <p>CUSIP</p>
+      </div>
+    </div>
+  `;
+}
+
+function bindDonutEvents() {
+  const canvas = document.getElementById('donutChart');
+  const updateHover = (event) => {
+    if (!state.donut.slices.length) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const dx = x - state.donut.slices[0].center;
+    const dy = y - state.donut.slices[0].center;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    let angle = Math.atan2(dy, dx);
+    if (angle < -Math.PI / 2) angle += Math.PI * 2;
+
+    const found = state.donut.slices.find((slice) => distance >= slice.innerRadius && distance <= slice.outerRadius && angle >= slice.start && angle <= slice.end);
+    const investor = state.data?.investors?.[state.activeIndex];
+    if (!investor) return;
+
+    if (!found) {
+      state.donut.hoverIndex = -1;
+      canvas.classList.remove('hovering');
+      renderHoldingDetail(investor, 0);
+      drawDonut(investor.latestHoldings, investor.accent, -1);
+      return;
+    }
+
+    canvas.classList.add('hovering');
+    if (state.donut.hoverIndex === found.index) return;
+    state.donut.hoverIndex = found.index;
+    renderHoldingDetail(investor, found.index);
+    drawDonut(investor.latestHoldings, investor.accent, found.index);
+  };
+
+  canvas.addEventListener('mousemove', updateHover);
+  canvas.addEventListener('mouseleave', () => {
+    const investor = state.data?.investors?.[state.activeIndex];
+    if (!investor) return;
+    state.donut.hoverIndex = -1;
+    canvas.classList.remove('hovering');
+    renderHoldingDetail(investor, 0);
+    drawDonut(investor.latestHoldings, investor.accent, -1);
+  });
 }
 
 function bindChartEvents() {
