@@ -78,7 +78,8 @@ h2 { font-size: clamp(24px, 3vw, 32px); }
   height: 140px;
   right: -36px;
   top: -46px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 40%, transparent), transparent 68%);
+  background: radial-gradient(circle, var(--accent), transparent 68%);
+  opacity: 0.3;
 }
 .investor-card.active { outline: 2px solid var(--aqua); transform: translateY(-2px); }
 .investor-card-top, .investor-card p, .legend-item p, .change-item p, .modal-metrics span, .cusip { color: var(--muted); }
@@ -90,9 +91,10 @@ h2 { font-size: clamp(24px, 3vw, 32px); }
 .spotlight-panel { overflow: hidden; }
 .pie-stage {
   position: relative;
-  width: min(520px, 100%);
+  width: 100%;
+  max-width: 520px;
+  height: 520px;
   margin: 0 auto 22px;
-  aspect-ratio: 1;
   display: grid;
   place-items: center;
 }
@@ -203,5 +205,6 @@ tr:hover td { background: rgba(56,189,248,.04); }
   .hero, .split, .stage-split { grid-template-columns: 1fr; }
   .hero-panel { grid-template-columns: 1fr; }
   .section-head, .modal-head { display: block; }
+  .pie-stage { height: min(88vw, 420px); }
   .pie-center { width: 56%; min-width: 180px; }
 }

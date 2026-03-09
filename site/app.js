@@ -67,8 +67,8 @@ function renderOverview(data) {
     <div class="change-item">
       <span class="badge ${item.status}">${labelStatus(item.status)}</span>
       <div>
-        <strong>${item.name}</strong>
-        <p>${item.investorDisplayName}</p>
+        <strong>${escapeHtml(item.name)}</strong>
+        <p>${escapeHtml(item.investorDisplayName)}</p>
       </div>
       <div>
         <strong>${signedMoney(item.diffValue)}</strong>
@@ -289,4 +289,13 @@ function labelStatus(status) {
 function signedMoney(value) {
   const sign = value >= 0 ? '+' : '-';
   return `${sign}${currency.format(Math.abs(value || 0))}`;
+}
+
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
