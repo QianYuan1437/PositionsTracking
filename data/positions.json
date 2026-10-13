@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-13T04:48:35Z",
+  "generatedAt": "2026-10-13T11:13:10Z",
   "yearsBack": 10,
-  "investorCount": 8,
+  "investorCount": 10,
   "rankings": [
     {
       "name": "Warren Buffett",
@@ -36,6 +36,14 @@
       "topHolding": "ZOETIS INC"
     },
     {
+      "name": "Carl Icahn",
+      "entity": "Icahn Capital",
+      "quarter": "Q2-2026",
+      "portfolioValue": 8264090000,
+      "valueChange": -289550000,
+      "topHolding": "ICAHN ENTERPRISES LP"
+    },
+    {
       "name": "David Tepper",
       "entity": "Appaloosa",
       "quarter": "Q2-2026",
@@ -66,6 +74,14 @@
       "portfolioValue": 4679571000,
       "valueChange": 2596776000,
       "topHolding": "BAXTER INTL INC"
+    },
+    {
+      "name": "Michael Burry",
+      "entity": "Scion Asset Management",
+      "quarter": "Q3-2025",
+      "portfolioValue": 1381198000,
+      "valueChange": 802861000,
+      "topHolding": "APPLE INC"
     }
   ],
   "spotlightChanges": [
@@ -107,6 +123,36 @@
       "value": 1854020000,
       "previousValue": 1004880000,
       "diffValue": 849140000,
+      "status": "increased"
+    },
+    {
+      "investor": "Carl Icahn",
+      "entity": "Icahn Capital",
+      "name": "ALLERGAN PLC",
+      "cusip": "G0177J108",
+      "value": 0,
+      "previousValue": 785706000,
+      "diffValue": -785706000,
+      "status": "exited"
+    },
+    {
+      "investor": "Carl Icahn",
+      "entity": "Icahn Capital",
+      "name": "CVR ENERGY INC",
+      "cusip": "12662P108",
+      "value": 1858287000,
+      "previousValue": 1103580000,
+      "diffValue": 754707000,
+      "status": "increased"
+    },
+    {
+      "investor": "Carl Icahn",
+      "entity": "Icahn Capital",
+      "name": "ICAHN ENTERPRISES LP",
+      "cusip": "451100101",
+      "value": 7422194000,
+      "previousValue": 6671801000,
+      "diffValue": 750393000,
       "status": "increased"
     },
     {
@@ -158,36 +204,6 @@
       "previousValue": 0,
       "diffValue": 449790000,
       "status": "new"
-    },
-    {
-      "investor": "Dan Loeb",
-      "entity": "Third Point",
-      "name": "FACEBOOK INC",
-      "cusip": "30303M102",
-      "value": 0,
-      "previousValue": 428550000,
-      "diffValue": -428550000,
-      "status": "exited"
-    },
-    {
-      "investor": "David Tepper",
-      "entity": "Appaloosa",
-      "name": "DELTA AIR LINES INC DEL",
-      "cusip": "247361702",
-      "value": 418398000,
-      "previousValue": 0,
-      "diffValue": 418398000,
-      "status": "new"
-    },
-    {
-      "investor": "David Tepper",
-      "entity": "Appaloosa",
-      "name": "ALLERGAN PLC",
-      "cusip": "G0177J108",
-      "value": 0,
-      "previousValue": 291360000,
-      "diffValue": -291360000,
-      "status": "exited"
     }
   ],
   "investors": [
@@ -788,6 +804,430 @@
           "previousValue": 3430598000,
           "diffValue": 22116000,
           "status": "increased"
+        }
+      ]
+    },
+    {
+      "name": "Michael Burry",
+      "entity": "Scion Asset Management",
+      "sourceUrl": "https://13f.info/manager/0001649339-scion-asset-management-llc",
+      "accent": "#22c55e",
+      "latestQuarter": "Q3-2025",
+      "latestDate": "2025-09-30",
+      "latestPortfolioValue": 1381198000,
+      "portfolioValueChange": 802861000,
+      "timeline": [
+        {
+          "date": "2016-03-31",
+          "quarter": "Q1-2016",
+          "portfolioValue": 51092000,
+          "holdingsCount": 8,
+          "topHolding": "AAPL",
+          "filedAt": "5/16/2016"
+        },
+        {
+          "date": "2016-06-30",
+          "quarter": "Q2-2016",
+          "portfolioValue": 45502000,
+          "holdingsCount": 6,
+          "topHolding": "NXRT",
+          "filedAt": "8/15/2016"
+        },
+        {
+          "date": "2016-09-30",
+          "quarter": "Q3-2016",
+          "portfolioValue": 35387000,
+          "holdingsCount": 4,
+          "topHolding": "COTY",
+          "filedAt": "11/14/2016"
+        },
+        {
+          "date": "2018-12-31",
+          "quarter": "Q4-2018",
+          "portfolioValue": 103528000,
+          "holdingsCount": 16,
+          "topHolding": "CPLG",
+          "filedAt": "2/14/2019"
+        },
+        {
+          "date": "2019-03-31",
+          "quarter": "Q1-2019",
+          "portfolioValue": 98181000,
+          "holdingsCount": 14,
+          "topHolding": "JD",
+          "filedAt": "5/15/2019"
+        },
+        {
+          "date": "2019-06-30",
+          "quarter": "Q2-2019",
+          "portfolioValue": 93561000,
+          "holdingsCount": 10,
+          "topHolding": "WDC",
+          "filedAt": "8/14/2019"
+        },
+        {
+          "date": "2019-09-30",
+          "quarter": "Q3-2019",
+          "portfolioValue": 59618000,
+          "holdingsCount": 7,
+          "topHolding": "GME",
+          "filedAt": "11/14/2019"
+        },
+        {
+          "date": "2019-12-31",
+          "quarter": "Q4-2019",
+          "portfolioValue": 82298000,
+          "holdingsCount": 9,
+          "topHolding": "GME",
+          "filedAt": "2/14/2020"
+        },
+        {
+          "date": "2020-03-31",
+          "quarter": "Q1-2020",
+          "portfolioValue": 85874000,
+          "holdingsCount": 14,
+          "topHolding": "JACK",
+          "filedAt": "5/15/2020"
+        },
+        {
+          "date": "2020-06-30",
+          "quarter": "Q2-2020",
+          "portfolioValue": 315294000,
+          "holdingsCount": 29,
+          "topHolding": "GOOG calls",
+          "filedAt": "8/14/2020"
+        },
+        {
+          "date": "2020-09-30",
+          "quarter": "Q3-2020",
+          "portfolioValue": 330268000,
+          "holdingsCount": 33,
+          "topHolding": "GOOG calls",
+          "filedAt": "11/16/2020"
+        },
+        {
+          "date": "2020-12-31",
+          "quarter": "Q4-2020",
+          "portfolioValue": 224698000,
+          "holdingsCount": 23,
+          "topHolding": "C calls",
+          "filedAt": "2/16/2021"
+        },
+        {
+          "date": "2021-03-31",
+          "quarter": "Q1-2021",
+          "portfolioValue": 1353930000,
+          "holdingsCount": 31,
+          "topHolding": "TSLA puts",
+          "filedAt": "5/17/2021"
+        },
+        {
+          "date": "2021-06-30",
+          "quarter": "Q2-2021",
+          "portfolioValue": 2081933000,
+          "holdingsCount": 22,
+          "topHolding": "TSLA puts",
+          "filedAt": "8/16/2021"
+        },
+        {
+          "date": "2021-09-30",
+          "quarter": "Q3-2021",
+          "portfolioValue": 41719000,
+          "holdingsCount": 6,
+          "topHolding": "CVS",
+          "filedAt": "11/15/2021"
+        },
+        {
+          "date": "2021-12-31",
+          "quarter": "Q4-2021",
+          "portfolioValue": 74459000,
+          "holdingsCount": 6,
+          "topHolding": "BMY",
+          "filedAt": "2/14/2022"
+        },
+        {
+          "date": "2022-03-31",
+          "quarter": "Q1-2022",
+          "portfolioValue": 201379000,
+          "holdingsCount": 12,
+          "topHolding": "AAPL puts",
+          "filedAt": "5/16/2022"
+        },
+        {
+          "date": "2022-06-30",
+          "quarter": "Q2-2022",
+          "portfolioValue": 3309000,
+          "holdingsCount": 1,
+          "topHolding": "GEO",
+          "filedAt": "8/15/2022"
+        },
+        {
+          "date": "2022-09-30",
+          "quarter": "Q3-2022",
+          "portfolioValue": 41298000,
+          "holdingsCount": 6,
+          "topHolding": "GEO",
+          "filedAt": "11/14/2022"
+        },
+        {
+          "date": "2022-12-31",
+          "quarter": "Q4-2022",
+          "portfolioValue": 46536000,
+          "holdingsCount": 9,
+          "topHolding": "GEO",
+          "filedAt": "2/14/2023"
+        },
+        {
+          "date": "2023-03-31",
+          "quarter": "Q1-2023",
+          "portfolioValue": 106935000,
+          "holdingsCount": 21,
+          "topHolding": "JD",
+          "filedAt": "5/15/2023"
+        },
+        {
+          "date": "2023-06-30",
+          "quarter": "Q2-2023",
+          "portfolioValue": 1736760000,
+          "holdingsCount": 33,
+          "topHolding": "SPY puts",
+          "filedAt": "8/14/2023"
+        },
+        {
+          "date": "2023-09-30",
+          "quarter": "Q3-2023",
+          "portfolioValue": 98976000,
+          "holdingsCount": 13,
+          "topHolding": "SOXX puts",
+          "filedAt": "11/14/2023"
+        },
+        {
+          "date": "2023-12-31",
+          "quarter": "Q4-2023",
+          "portfolioValue": 94591000,
+          "holdingsCount": 25,
+          "topHolding": "BABA",
+          "filedAt": "2/16/2024"
+        },
+        {
+          "date": "2024-03-31",
+          "quarter": "Q1-2024",
+          "portfolioValue": 103486000,
+          "holdingsCount": 16,
+          "topHolding": "JD",
+          "filedAt": "5/15/2024"
+        },
+        {
+          "date": "2024-06-30",
+          "quarter": "Q2-2024",
+          "portfolioValue": 52487000,
+          "holdingsCount": 10,
+          "topHolding": "BABA",
+          "filedAt": "8/14/2024"
+        },
+        {
+          "date": "2024-09-30",
+          "quarter": "Q3-2024",
+          "portfolioValue": 129753000,
+          "holdingsCount": 11,
+          "topHolding": "BABA",
+          "filedAt": "11/14/2024"
+        },
+        {
+          "date": "2024-12-31",
+          "quarter": "Q4-2024",
+          "portfolioValue": 77435000,
+          "holdingsCount": 13,
+          "topHolding": "BABA",
+          "filedAt": "2/14/2025"
+        },
+        {
+          "date": "2025-03-31",
+          "quarter": "Q1-2025",
+          "portfolioValue": 199225000,
+          "holdingsCount": 7,
+          "topHolding": "NVDA puts",
+          "filedAt": "5/15/2025"
+        },
+        {
+          "date": "2025-06-30",
+          "quarter": "Q2-2025",
+          "portfolioValue": 578337000,
+          "holdingsCount": 15,
+          "topHolding": "UNH calls",
+          "filedAt": "8/14/2025"
+        },
+        {
+          "date": "2025-09-30",
+          "quarter": "Q3-2025",
+          "portfolioValue": 1381198000,
+          "holdingsCount": 8,
+          "topHolding": "PLTR puts",
+          "filedAt": "11/3/2025"
+        }
+      ],
+      "latestHoldings": [
+        {
+          "symbol": "AAPL",
+          "name": "APPLE INC",
+          "title": "COM",
+          "cusip": "037833100",
+          "value": 8174000,
+          "weight": 16.0,
+          "shares": 75000,
+          "putCall": null
+        },
+        {
+          "symbol": "NXRT",
+          "name": "NEXPOINT RESIDENTIAL TR INC",
+          "title": "COM",
+          "cusip": "65341D102",
+          "value": 7984000,
+          "weight": 15.6,
+          "shares": 609905,
+          "putCall": null
+        },
+        {
+          "symbol": "HCA",
+          "name": "HCA HOLDINGS INC",
+          "title": "COM",
+          "cusip": "40412C101",
+          "value": 7805000,
+          "weight": 15.3,
+          "shares": 100000,
+          "putCall": null
+        },
+        {
+          "symbol": "TLRDQ",
+          "name": "TAILORED BRANDS INC",
+          "title": "COM",
+          "cusip": "87403A107",
+          "value": 7160000,
+          "weight": 14.0,
+          "shares": 400000,
+          "putCall": null
+        },
+        {
+          "symbol": "FSLR",
+          "name": "FIRST SOLAR INC",
+          "title": "COM",
+          "cusip": "336433107",
+          "value": 6847000,
+          "weight": 13.4,
+          "shares": 100000,
+          "putCall": null
+        },
+        {
+          "symbol": "AMGN",
+          "name": "AMGEN INC",
+          "title": "COM",
+          "cusip": "031162100",
+          "value": 5997000,
+          "weight": 11.7,
+          "shares": 40000,
+          "putCall": null
+        },
+        {
+          "symbol": "TBPH",
+          "name": "THERAVANCE BIOPHARMA INC",
+          "title": "COM",
+          "cusip": "G8807B106",
+          "value": 5170000,
+          "weight": 10.1,
+          "shares": 275000,
+          "putCall": null
+        },
+        {
+          "symbol": "THRM",
+          "name": "GENTHERM INC",
+          "title": "COM",
+          "cusip": "37253A103",
+          "value": 1955000,
+          "weight": 3.8,
+          "shares": 47000,
+          "putCall": null
+        }
+      ],
+      "changes": [
+        {
+          "name": "ALPHABET INC",
+          "cusip": "02079K107",
+          "value": 0,
+          "previousValue": 10382000,
+          "diffValue": -10382000,
+          "status": "exited"
+        },
+        {
+          "name": "APPLE INC",
+          "cusip": "037833100",
+          "value": 8174000,
+          "previousValue": 0,
+          "diffValue": 8174000,
+          "status": "new"
+        },
+        {
+          "name": "TAILORED BRANDS INC",
+          "cusip": "87403A107",
+          "value": 7160000,
+          "previousValue": 0,
+          "diffValue": 7160000,
+          "status": "new"
+        },
+        {
+          "name": "FIRST SOLAR INC",
+          "cusip": "336433107",
+          "value": 6847000,
+          "previousValue": 0,
+          "diffValue": 6847000,
+          "status": "new"
+        },
+        {
+          "name": "NEXPOINT RESIDENTIAL TR INC",
+          "cusip": "65341D102",
+          "value": 7984000,
+          "previousValue": 11100000,
+          "diffValue": -3116000,
+          "status": "reduced"
+        },
+        {
+          "name": "NEOPHOTONICS CORP",
+          "cusip": "64051T100",
+          "value": 0,
+          "previousValue": 2859000,
+          "diffValue": -2859000,
+          "status": "exited"
+        },
+        {
+          "name": "THERAVANCE BIOPHARMA INC",
+          "cusip": "G8807B106",
+          "value": 5170000,
+          "previousValue": 7374000,
+          "diffValue": -2204000,
+          "status": "reduced"
+        },
+        {
+          "name": "GENTHERM INC",
+          "cusip": "37253A103",
+          "value": 1955000,
+          "previousValue": 0,
+          "diffValue": 1955000,
+          "status": "new"
+        },
+        {
+          "name": "HCA HOLDINGS INC",
+          "cusip": "40412C101",
+          "value": 7805000,
+          "previousValue": 7701000,
+          "diffValue": 104000,
+          "status": "increased"
+        },
+        {
+          "name": "AMGEN INC",
+          "cusip": "031162100",
+          "value": 5997000,
+          "previousValue": 6086000,
+          "diffValue": -89000,
+          "status": "reduced"
         }
       ]
     },
@@ -2470,6 +2910,574 @@
           "previousValue": 2141086000,
           "diffValue": -19667000,
           "status": "reduced"
+        }
+      ]
+    },
+    {
+      "name": "Carl Icahn",
+      "entity": "Icahn Capital",
+      "sourceUrl": "https://13f.info/manager/0000921669-icahn-carl-c",
+      "accent": "#f97316",
+      "latestQuarter": "Q2-2026",
+      "latestDate": "2026-06-30",
+      "latestPortfolioValue": 8264090000,
+      "portfolioValueChange": -289550000,
+      "timeline": [
+        {
+          "date": "2016-03-31",
+          "quarter": "Q1-2016",
+          "portfolioValue": 21485197000,
+          "holdingsCount": 21,
+          "topHolding": "IEP",
+          "filedAt": "5/16/2016"
+        },
+        {
+          "date": "2016-06-30",
+          "quarter": "Q2-2016",
+          "portfolioValue": 20275809000,
+          "holdingsCount": 21,
+          "topHolding": "IEP",
+          "filedAt": "8/15/2016"
+        },
+        {
+          "date": "2016-09-30",
+          "quarter": "Q3-2016",
+          "portfolioValue": 19804653000,
+          "holdingsCount": 19,
+          "topHolding": "IEP",
+          "filedAt": "11/14/2016"
+        },
+        {
+          "date": "2016-12-31",
+          "quarter": "Q4-2016",
+          "portfolioValue": 22373522000,
+          "holdingsCount": 18,
+          "topHolding": "IEP",
+          "filedAt": "2/14/2017"
+        },
+        {
+          "date": "2017-03-31",
+          "quarter": "Q1-2017",
+          "portfolioValue": 19937172000,
+          "holdingsCount": 16,
+          "topHolding": "IEP",
+          "filedAt": "5/15/2017"
+        },
+        {
+          "date": "2017-06-30",
+          "quarter": "Q2-2017",
+          "portfolioValue": 19553579000,
+          "holdingsCount": 16,
+          "topHolding": "IEP",
+          "filedAt": "8/14/2017"
+        },
+        {
+          "date": "2017-09-30",
+          "quarter": "Q3-2017",
+          "portfolioValue": 21250689000,
+          "holdingsCount": 16,
+          "topHolding": "IEP",
+          "filedAt": "11/14/2017"
+        },
+        {
+          "date": "2017-12-31",
+          "quarter": "Q4-2017",
+          "portfolioValue": 22660406000,
+          "holdingsCount": 17,
+          "topHolding": "IEP",
+          "filedAt": "2/14/2018"
+        },
+        {
+          "date": "2018-03-31",
+          "quarter": "Q1-2018",
+          "portfolioValue": 20122437000,
+          "holdingsCount": 16,
+          "topHolding": "IEP",
+          "filedAt": "5/15/2018"
+        },
+        {
+          "date": "2018-06-30",
+          "quarter": "Q2-2018",
+          "portfolioValue": 24143868000,
+          "holdingsCount": 21,
+          "topHolding": "IEP",
+          "filedAt": "8/14/2018"
+        },
+        {
+          "date": "2018-09-30",
+          "quarter": "Q3-2018",
+          "portfolioValue": 25217170000,
+          "holdingsCount": 20,
+          "topHolding": "IEP",
+          "filedAt": "11/14/2018"
+        },
+        {
+          "date": "2018-12-31",
+          "quarter": "Q4-2018",
+          "portfolioValue": 20425534000,
+          "holdingsCount": 18,
+          "topHolding": "IEP",
+          "filedAt": "2/14/2019"
+        },
+        {
+          "date": "2019-03-31",
+          "quarter": "Q1-2019",
+          "portfolioValue": 24102716000,
+          "holdingsCount": 16,
+          "topHolding": "IEP",
+          "filedAt": "5/15/2019"
+        },
+        {
+          "date": "2019-06-30",
+          "quarter": "Q2-2019",
+          "portfolioValue": 26522715000,
+          "holdingsCount": 16,
+          "topHolding": "IEP",
+          "filedAt": "8/14/2019"
+        },
+        {
+          "date": "2019-09-30",
+          "quarter": "Q3-2019",
+          "portfolioValue": 25693122000,
+          "holdingsCount": 18,
+          "topHolding": "IEP",
+          "filedAt": "11/14/2019"
+        },
+        {
+          "date": "2019-12-31",
+          "quarter": "Q4-2019",
+          "portfolioValue": 26177139000,
+          "holdingsCount": 18,
+          "topHolding": "IEP",
+          "filedAt": "2/14/2020"
+        },
+        {
+          "date": "2020-03-31",
+          "quarter": "Q1-2020",
+          "portfolioValue": 18003125000,
+          "holdingsCount": 19,
+          "topHolding": "IEP",
+          "filedAt": "5/15/2020"
+        },
+        {
+          "date": "2020-06-30",
+          "quarter": "Q2-2020",
+          "portfolioValue": 19724532000,
+          "holdingsCount": 16,
+          "topHolding": "IEP",
+          "filedAt": "8/14/2020"
+        },
+        {
+          "date": "2020-09-30",
+          "quarter": "Q3-2020",
+          "portfolioValue": 17374142000,
+          "holdingsCount": 16,
+          "topHolding": "IEP",
+          "filedAt": "11/13/2020"
+        },
+        {
+          "date": "2020-12-31",
+          "quarter": "Q4-2020",
+          "portfolioValue": 20059938000,
+          "holdingsCount": 18,
+          "topHolding": "IEP",
+          "filedAt": "2/12/2021"
+        },
+        {
+          "date": "2021-03-31",
+          "quarter": "Q1-2021",
+          "portfolioValue": 23848300000,
+          "holdingsCount": 19,
+          "topHolding": "IEP",
+          "filedAt": "5/14/2021"
+        },
+        {
+          "date": "2021-06-30",
+          "quarter": "Q2-2021",
+          "portfolioValue": 24291939000,
+          "holdingsCount": 17,
+          "topHolding": "IEP",
+          "filedAt": "8/13/2021"
+        },
+        {
+          "date": "2021-09-30",
+          "quarter": "Q3-2021",
+          "portfolioValue": 22521664000,
+          "holdingsCount": 17,
+          "topHolding": "IEP",
+          "filedAt": "11/15/2021"
+        },
+        {
+          "date": "2021-12-31",
+          "quarter": "Q4-2021",
+          "portfolioValue": 22289187000,
+          "holdingsCount": 16,
+          "topHolding": "IEP",
+          "filedAt": "2/14/2022"
+        },
+        {
+          "date": "2022-03-31",
+          "quarter": "Q1-2022",
+          "portfolioValue": 21866657000,
+          "holdingsCount": 16,
+          "topHolding": "IEP",
+          "filedAt": "5/13/2022"
+        },
+        {
+          "date": "2022-06-30",
+          "quarter": "Q2-2022",
+          "portfolioValue": 20857602000,
+          "holdingsCount": 16,
+          "topHolding": "IEP",
+          "filedAt": "8/15/2022"
+        },
+        {
+          "date": "2022-09-30",
+          "quarter": "Q3-2022",
+          "portfolioValue": 21227346000,
+          "holdingsCount": 17,
+          "topHolding": "IEP",
+          "filedAt": "11/14/2022"
+        },
+        {
+          "date": "2022-12-31",
+          "quarter": "Q4-2022",
+          "portfolioValue": 21754636000,
+          "holdingsCount": 16,
+          "topHolding": "IEP",
+          "filedAt": "2/14/2023"
+        },
+        {
+          "date": "2023-03-31",
+          "quarter": "Q1-2023",
+          "portfolioValue": 22026521000,
+          "holdingsCount": 17,
+          "topHolding": "IEP",
+          "filedAt": "5/15/2023"
+        },
+        {
+          "date": "2023-06-30",
+          "quarter": "Q2-2023",
+          "portfolioValue": 15483981000,
+          "holdingsCount": 15,
+          "topHolding": "IEP",
+          "filedAt": "8/14/2023"
+        },
+        {
+          "date": "2023-09-30",
+          "quarter": "Q3-2023",
+          "portfolioValue": 12080415000,
+          "holdingsCount": 14,
+          "topHolding": "IEP",
+          "filedAt": "11/14/2023"
+        },
+        {
+          "date": "2023-12-31",
+          "quarter": "Q4-2023",
+          "portfolioValue": 10914055000,
+          "holdingsCount": 14,
+          "topHolding": "IEP",
+          "filedAt": "2/14/2024"
+        },
+        {
+          "date": "2024-03-31",
+          "quarter": "Q1-2024",
+          "portfolioValue": 11917788000,
+          "holdingsCount": 14,
+          "topHolding": "IEP",
+          "filedAt": "5/15/2024"
+        },
+        {
+          "date": "2024-06-30",
+          "quarter": "Q2-2024",
+          "portfolioValue": 10843027000,
+          "holdingsCount": 14,
+          "topHolding": "IEP",
+          "filedAt": "8/14/2024"
+        },
+        {
+          "date": "2024-09-30",
+          "quarter": "Q3-2024",
+          "portfolioValue": 9877196000,
+          "holdingsCount": 14,
+          "topHolding": "IEP",
+          "filedAt": "11/14/2024"
+        },
+        {
+          "date": "2024-12-31",
+          "quarter": "Q4-2024",
+          "portfolioValue": 7415250000,
+          "holdingsCount": 14,
+          "topHolding": "IEP",
+          "filedAt": "2/14/2025"
+        },
+        {
+          "date": "2025-03-31",
+          "quarter": "Q1-2025",
+          "portfolioValue": 7487554000,
+          "holdingsCount": 14,
+          "topHolding": "IEP",
+          "filedAt": "5/15/2025"
+        },
+        {
+          "date": "2025-06-30",
+          "quarter": "Q2-2025",
+          "portfolioValue": 7886564000,
+          "holdingsCount": 12,
+          "topHolding": "IEP",
+          "filedAt": "8/14/2025"
+        },
+        {
+          "date": "2025-09-30",
+          "quarter": "Q3-2025",
+          "portfolioValue": 9141599000,
+          "holdingsCount": 13,
+          "topHolding": "IEP",
+          "filedAt": "11/14/2025"
+        },
+        {
+          "date": "2025-12-31",
+          "quarter": "Q4-2025",
+          "portfolioValue": 8445167000,
+          "holdingsCount": 13,
+          "topHolding": "IEP",
+          "filedAt": "2/17/2026"
+        },
+        {
+          "date": "2026-03-31",
+          "quarter": "Q1-2026",
+          "portfolioValue": 8553640000,
+          "holdingsCount": 12,
+          "topHolding": "IEP",
+          "filedAt": "5/15/2026"
+        },
+        {
+          "date": "2026-06-30",
+          "quarter": "Q2-2026",
+          "portfolioValue": 8264090000,
+          "holdingsCount": 12,
+          "topHolding": "IEP",
+          "filedAt": "8/14/2026"
+        }
+      ],
+      "latestHoldings": [
+        {
+          "symbol": "IEP",
+          "name": "ICAHN ENTERPRISES LP",
+          "title": "DEPOSITARY UNIT",
+          "cusip": "451100101",
+          "value": 7422194000,
+          "weight": 34.5,
+          "shares": 117719185,
+          "putCall": null
+        },
+        {
+          "symbol": "AIG",
+          "name": "AMERICAN INTL GROUP INC",
+          "title": "COM NEW",
+          "cusip": "026874784",
+          "value": 2401019000,
+          "weight": 11.2,
+          "shares": 44422186,
+          "putCall": null
+        },
+        {
+          "symbol": "CVI",
+          "name": "CVR ENERGY INC",
+          "title": "COM",
+          "cusip": "12662P108",
+          "value": 1858287000,
+          "weight": 8.6,
+          "shares": 71198718,
+          "putCall": null
+        },
+        {
+          "symbol": "PYPL",
+          "name": "PAYPAL HLDGS INC",
+          "title": "COM",
+          "cusip": "70450Y103",
+          "value": 1460177000,
+          "weight": 6.8,
+          "shares": 37828419,
+          "putCall": null
+        },
+        {
+          "symbol": "FDML",
+          "name": "FEDERAL MOGUL HOLDINGS CORP",
+          "title": "COM",
+          "cusip": "313549404",
+          "value": 1369271000,
+          "weight": 6.4,
+          "shares": 138590141,
+          "putCall": null
+        },
+        {
+          "symbol": "LNG",
+          "name": "CHENIERE ENERGY INC",
+          "title": "COM NEW",
+          "cusip": "16411R208",
+          "value": 1105581000,
+          "weight": 5.1,
+          "shares": 32680490,
+          "putCall": null
+        },
+        {
+          "symbol": "FCX",
+          "name": "FREEPORT-MCMORAN INC",
+          "title": "CL B",
+          "cusip": "35671D857",
+          "value": 1075360000,
+          "weight": 5.0,
+          "shares": 104000000,
+          "putCall": null
+        },
+        {
+          "symbol": "HLF",
+          "name": "HERBALIFE LTD",
+          "title": "COM USD SHS",
+          "cusip": "G4412G101",
+          "value": 1046520000,
+          "weight": 4.9,
+          "shares": 17000000,
+          "putCall": null
+        },
+        {
+          "symbol": "XRX",
+          "name": "XEROX CORP",
+          "title": "COM",
+          "cusip": "984121103",
+          "value": 1030928000,
+          "weight": 4.8,
+          "shares": 92377043,
+          "putCall": null
+        },
+        {
+          "symbol": "HTZ",
+          "name": "HERTZ GLOBAL HOLDINGS INC",
+          "title": "COM",
+          "cusip": "42805T105",
+          "value": 670856000,
+          "weight": 3.1,
+          "shares": 63709083,
+          "putCall": null
+        },
+        {
+          "symbol": "NUAN",
+          "name": "NUANCE COMMUNICATIONS INC",
+          "title": "COM",
+          "cusip": "67020Y100",
+          "value": 561986000,
+          "weight": 2.6,
+          "shares": 30068833,
+          "putCall": null
+        },
+        {
+          "symbol": "ARII",
+          "name": "AMERICAN RAILCAR INDS INC",
+          "title": "COM",
+          "cusip": "02916P103",
+          "value": 483517000,
+          "weight": 2.3,
+          "shares": 11871268,
+          "putCall": null
+        }
+      ],
+      "changes": [
+        {
+          "name": "ALLERGAN PLC",
+          "cusip": "G0177J108",
+          "value": 0,
+          "previousValue": 785706000,
+          "diffValue": -785706000,
+          "status": "exited"
+        },
+        {
+          "name": "CVR ENERGY INC",
+          "cusip": "12662P108",
+          "value": 1858287000,
+          "previousValue": 1103580000,
+          "diffValue": 754707000,
+          "status": "increased"
+        },
+        {
+          "name": "ICAHN ENTERPRISES LP",
+          "cusip": "451100101",
+          "value": 7422194000,
+          "previousValue": 6671801000,
+          "diffValue": 750393000,
+          "status": "increased"
+        },
+        {
+          "name": "HERTZ GLOBAL HOLDINGS INC",
+          "cusip": "42805T105",
+          "value": 670856000,
+          "previousValue": 0,
+          "diffValue": 670856000,
+          "status": "new"
+        },
+        {
+          "name": "HERTZ RENT CAR HLDG CO INC",
+          "cusip": "42806J106",
+          "value": 0,
+          "previousValue": 569299000,
+          "diffValue": -569299000,
+          "status": "exited"
+        },
+        {
+          "name": "NUANCE COMMUNICATIONS INC",
+          "cusip": "67020Y100",
+          "value": 561986000,
+          "previousValue": 0,
+          "diffValue": 561986000,
+          "status": "new"
+        },
+        {
+          "name": "PAYPAL HLDGS INC",
+          "cusip": "70450Y103",
+          "value": 1460177000,
+          "previousValue": 1237585000,
+          "diffValue": 222592000,
+          "status": "increased"
+        },
+        {
+          "name": "FEDERAL MOGUL HOLDINGS CORP",
+          "cusip": "313549404",
+          "value": 1369271000,
+          "previousValue": 1151684000,
+          "diffValue": 217587000,
+          "status": "increased"
+        },
+        {
+          "name": "CHENIERE ENERGY INC",
+          "cusip": "16411R208",
+          "value": 1105581000,
+          "previousValue": 1227153000,
+          "diffValue": -121572000,
+          "status": "reduced"
+        },
+        {
+          "name": "XEROX CORP",
+          "cusip": "984121103",
+          "value": 1030928000,
+          "previousValue": 939795000,
+          "diffValue": 91133000,
+          "status": "increased"
+        },
+        {
+          "name": "FREEPORT-MCMORAN INC",
+          "cusip": "35671D857",
+          "value": 1075360000,
+          "previousValue": 1158560000,
+          "diffValue": -83200000,
+          "status": "reduced"
+        },
+        {
+          "name": "HERBALIFE LTD",
+          "cusip": "G4412G101",
+          "value": 1046520000,
+          "previousValue": 995010000,
+          "diffValue": 51510000,
+          "status": "increased"
         }
       ]
     },
@@ -4762,14 +5770,5 @@
       ]
     }
   ],
-  "errors": [
-    {
-      "investor": "Michael Burry",
-      "error": "The read operation timed out"
-    },
-    {
-      "investor": "Carl Icahn",
-      "error": "The read operation timed out"
-    }
-  ]
+  "errors": []
 }
